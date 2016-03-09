@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Put your title in here</title>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.25/paper-full.min.js'></script>
+       
+        <script>
+	    paper.install(window);
+            $(startup);
+            function startup()
+	    {
+               paper.setup('myCanvas');
+              
+             
+               $("#btnnight").click(nightscene)
+               $("#btnday").click(dayscene)
+               $("#btnsnow").click(snowscene)
+            }
+            function drawsky()
+            {
+                  var sky = new Path.Rectangle({
+                   point : [0,0],
+                   size : [800,600],
+                   fillColor : "b0dbee",
+                   strokeColor : "black"
+               });
+               sky.onMouseDown = function(event) {
+                var hitpoint = event.point;
+                var text = new PointText(hitpoint);
+                text.fillColor="black";
+                text.content=hitpoint;
+               }
+            }
+        
+            function nightscene()
+            {
+                var night = Path.Rectangle({
+                    size : [800,600], point : [0,0], fillColor : "black"
+                })
+                night.onMouseDown = function(event) {
+                    var star = new Path.Star({
+                        center : event.point, points : 5, radius1:5, radius2 : 10, fillColor : "F5EF3D"
+                    });
+                }
+                //draw night grass
+                var nightgrass = Path.Rectangle({
+                   point : [0,500],
+                   size :[800,600],
+                   fillColor :"062c21",
+                   strokeColor : "black"
+                })
+      
+                //draw dark cloud 
+                var cloud1 = new Path.Ellipse({
+                   point : [100,50],
+                   size : [200,70],
+                   fillColor : "686b70",
+               });
+               
+                 var cloud2 = new Path.Ellipse({
+                   point : [150,70],
+                   size : [200,70],
+                   fillColor : "686b70",
+               });   
+                
+                 var cloud3 = new Path.Ellipse({
+                   point : [373,59],
+                   size : [200,70],
+                   fillColor : "686b70",
+               });
+                var cloud4 = new Path.Ellipse({
+                   point : [433,104],
+                   size : [200,70],
+                   fillColor : "686b70",
+               });
+                var cloud5 = new Path.Ellipse({
+                   point : [198,184],
+                   size : [200,70],
+                   fillColor : "686b70",
+               });
+               //draw dark house and roof 
+                var roof = new Path();
+                roof.strokeColor="black";
+                roof.fillColor="491b0e";
+                roof.add(new Point(140,400));
+                roof.add(new Point(400,400));
+                roof.add(new Point(340,340));
+                roof.add(new Point(200,340));
+                roof.closed=true;
+                //draw the house 
+                var house = new Path.Rectangle({
+                    point : [140,401], size : [260,100], fillColor :"084442", strokeColor :"black"
+                });
+               house.onMouseDown = function(event) {
+                var hitpoint = event.point;
+                var text = new PointText(hitpoint);
+                text.fillColor="black";
+                text.content=hitpoint;
+               }
+              //draw windwos
+              var windows1 = new Path.Rectangle({
+                  point : [169,419], size : [30,15], fillColor :"cbc0a1"
+              })
+              var windows2 = new Path.Rectangle({
+                  point : [233,437], size : [30,15], fillColor :"cbc0a1"
+              })  
+               var windows3 = new Path.Rectangle({
+                  point : [238,473], size : [30,15], fillColor :"cbc0a1"
+              })
+              var windows4 = new Path.Rectangle({
+                  point : [171,462], size : [30,15], fillColor :"cbc0a1"
+              }) 
+              //draw door
+              var doot = new Path.Rectangle({
+                  point : [321,448], size : [35,53], fillColor : "cbc0a1"
+              })
+              //draw tree night 
+               var tree = new Path.Rectangle({
+                    point : [534,385], size :[65,115], fillColor : "B3AF81"
+                })
+                
+                var leaves1 = new Path.Ellipse({
+                    point : [447, 346], size : [88,65], fillColor : "0f5307"
+                })
+                
+                var leaves2 = new Path.Ellipse({
+                    point : [504, 310], size : [88,80], fillColor : "0f5307"
+                })
+                
+                var leaves3 = new Path.Ellipse({
+                    point : [565, 330], size : [100,85], fillColor : "0f5307"
+                })
+                var leave4 = new Path.Ellipse({
+                    point : [500, 355], size : [78,85], fillColor : "0f5307"
+                })
+                 var moon = new Path.Ellipse({
+                   point : [700,50],
+                   size : [50,50],
+                   fillColor : "C9CCB6",
+               });
+               paper.project.view.update();
+            }
+            function snowscene()
+            {
+              drawsnowsky();
+              drawsnows();
+               drawhouse();
+               drawtree();
+               drawsnowgrass();
+               snowhouseroof();
+              drawsnowtree();
+                paper.project.view.update();
+            }
+            function drawsnows()
+            {
+                var s1 = new Path.Ellipse({
+                    point : [33, 27], size :[5, 10], fillColor : "white"
+                });
+                  var s2 = new Path.Ellipse({
+                    point : [86, 39], size :[5, 10], fillColor : "white"
+                });
+                  var s3 = new Path.Ellipse({
+                    point : [85, 57], size :[5, 10], fillColor : "white"
+                });
+                  var s4 = new Path.Ellipse({
+                    point : [86, 83], size :[5, 10], fillColor : "white"
+                });
+                  var s5 = new Path.Ellipse({
+                    point : [100, 131], size :[5, 10], fillColor : "white"
+                });
+                  var s6 = new Path.Ellipse({
+                    point : [47, 164], size :[5, 10], fillColor : "white"
+                });
+                  var s7 = new Path.Ellipse({
+                    point : [136, 160], size :[5, 10], fillColor : "white"
+                });
+                  var s8 = new Path.Ellipse({
+                    point : [32, 191], size :[5, 10], fillColor : "white"
+                });
+                  var s9 = new Path.Ellipse({
+                    point : [83, 226], size :[5, 10], fillColor : "white"
+                });
+                  var s10 = new Path.Ellipse({
+                    point : [234, 179], size :[5, 10], fillColor : "white"
+                });
+                  var s11 = new Path.Ellipse({
+                    point : [151, 256], size :[5, 10], fillColor : "white"
+                });
+                  var s12 = new Path.Ellipse({
+                    point : [68, 325], size :[5, 10], fillColor : "white"
+                });
+                  var s13 = new Path.Ellipse({
+                    point : [290, 317], size :[5, 10], fillColor : "white"
+                });
+                  var s14 = new Path.Ellipse({
+                    point : [293, 288], size :[5, 10], fillColor : "white"
+                });
+                  var s15 = new Path.Ellipse({
+                    point : [378, 277], size :[5, 10], fillColor : "white"
+                });
+                  var s16 = new Path.Ellipse({
+                    point : [448, 255], size :[5, 10], fillColor : "white"
+                });
+                  var s17 = new Path.Ellipse({
+                    point : [666, 225], size :[5, 10], fillColor : "white"
+                });
+                  var s18 = new Path.Ellipse({
+                    point : [659, 174], size :[5, 10], fillColor : "white"
+                });
+                  var s19 = new Path.Ellipse({
+                    point : [638, 258], size :[5, 10], fillColor : "white"
+                });
+                  var s20 = new Path.Ellipse({
+                    point : [33, 27], size :[5, 10], fillColor : "white"
+                });
+                  var a21 = new Path.Ellipse({
+                    point : [614, 315], size :[5, 10], fillColor : "white"
+                });
+            }
+            function drawsnowtree()
+            {
+                   var tree = new Path.Rectangle({
+                    point : [534,385], size :[65,115], fillColor : "877a42"
+                })
+                
+                var leaves1 = new Path.Ellipse({
+                    point : [447, 346], size : [88,65], fillColor : "white"
+                })
+                
+                var leaves2 = new Path.Ellipse({
+                    point : [504, 310], size : [88,80], fillColor : "white"
+                })
+                
+                var leaves3 = new Path.Ellipse({
+                    point : [565, 330], size : [100,85], fillColor : "white"
+                })
+                var leave4 = new Path.Ellipse({
+                    point : [500, 355], size : [78,85], fillColor : "white"
+                })
+            }
+            function drawsnowhouse()
+            {
+                   var house = new Path.Rectangle({
+                    point : [140,401], size : [260,100], fillColor :"11a2a7", strokeColor :"black"
+                });
+            }
+            function snowhouseroof()
+            {
+                var snowonhouse = new Path();
+               snowonhouse.fillColor="FFFFFF";
+                snowonhouse.add(new Point(140,400));
+                snowonhouse.add(new Point(400,400));
+                snowonhouse.add(new Point(340,340));
+                snowonhouse.add(new Point(200,340));
+                snowonhouse.closed=true;
+            }
+            function drawsnowgrass()
+            {
+                 var grass = new Path.Rectangle({
+                   point : [0,500],
+                   size :[800,600],
+                   fillColor :"white",
+               });
+            }
+            function drawsnowsky()
+            {
+                  
+               //draw sky with snow on it 
+                   var snowsky = new Path.Rectangle({
+                   point : [0,0],
+                   size : [800,600],
+                   fillColor : "87919d",
+                   strokeColor : "black"
+               });
+         snowsky.onMouseDown = function(event) {        
+        var snowsky = new Path.Ellipse({
+                        point : event.point, size : [5,10], fillColor : "white"
+                    });
+                }
+            }
+            
+            function dayscene()
+            {
+               drawsky();
+               drawgrass();
+               drawcloud();
+               drawsun();
+               drawhouse();
+               drawtree();
+              paper.project.view.update();
+            }
+            
+            function drawsun()
+            {
+                   var sun = new Path.Ellipse({
+                   point : [700,50],
+                   size : [50,50],
+                   fillColor : "yellow",
+                   strokeColor : "black"
+               });
+            }
+            function drawtree()
+            {
+                var tree = new Path.Rectangle({
+                    point : [534,385], size :[65,115], fillColor : "877a42"
+                })
+                
+                var leaves1 = new Path.Ellipse({
+                    point : [447, 346], size : [88,65], fillColor : "green"
+                })
+                
+                var leaves2 = new Path.Ellipse({
+                    point : [504, 310], size : [88,80], fillColor : "green"
+                })
+                
+                var leaves3 = new Path.Ellipse({
+                    point : [565, 330], size : [100,85], fillColor : "green"
+                })
+                var leave4 = new Path.Ellipse({
+                    point : [500, 355], size : [78,85], fillColor : "green"
+                })
+       
+            }
+            function drawgrass()
+            {
+                  var grass = new Path.Rectangle({
+                   point : [0,500],
+                   size :[800,600],
+                   fillColor :"65E034",
+                   strokeColor : "black"
+               });
+            }
+            function drawhouse()
+            {
+                //draw the roof 
+                var roof = new Path();
+                roof.strokeColor="black";
+                roof.fillColor="#BD0D33";
+                roof.add(new Point(140,400));
+                roof.add(new Point(400,400));
+                roof.add(new Point(340,340));
+                roof.add(new Point(200,340));
+                roof.closed=true;
+                //draw the house 
+                var house = new Path.Rectangle({
+                    point : [140,401], size : [260,100], fillColor :"11a2a7", strokeColor :"black"
+                });
+               house.onMouseDown = function(event) {
+                var hitpoint = event.point;
+                var text = new PointText(hitpoint);
+                text.fillColor="black";
+                text.content=hitpoint;
+               }
+              //draw windwos
+              var windows1 = new Path.Rectangle({
+                  point : [169,419], size : [30,15], fillColor :"FAF1AF"
+              })
+              var windows2 = new Path.Rectangle({
+                  point : [233,437], size : [30,15], fillColor :"FAF1AF"
+              })  
+               var windows3 = new Path.Rectangle({
+                  point : [238,473], size : [30,15], fillColor :"FAF1AF"
+              })
+              var windows4 = new Path.Rectangle({
+                  point : [171,462], size : [30,15], fillColor :"FAF1AF"
+              }) 
+              //draw door
+              var doot = new Path.Rectangle({
+                  point : [321,448], size : [35,53], fillColor : "ADA35F"
+              })
+            }
+            function drawcloud()
+            {
+                  var cloud1 = new Path.Ellipse({
+                   point : [100,50],
+                   size : [200,70],
+                   fillColor : "white",
+               });
+               
+                 var cloud2 = new Path.Ellipse({
+                   point : [150,70],
+                   size : [200,70],
+                   fillColor : "white",
+               });   
+                
+                 var cloud3 = new Path.Ellipse({
+                   point : [373,59],
+                   size : [200,70],
+                   fillColor : "white",
+               });
+                var cloud4 = new Path.Ellipse({
+                   point : [433,104],
+                   size : [200,70],
+                   fillColor : "white",
+               });
+                var cloud5 = new Path.Ellipse({
+                   point : [198,184],
+                   size : [200,70],
+                   fillColor : "white",
+               });
+            }
+           
+        </script>
+        
+        
+    </head>
+    <body>
+        <button id = "btnday">
+            Day scene
+        </button>
+        <button id = "btnnight">
+            Night Scene
+        </button><br>
+        <button id = "btnsnow">
+            Snow Scene
+        </button><br>
+<canvas id='myCanvas' width="800" height="600" style="border: 1px solid black">
+    
+    
+</canvas>
+    </body>
+</html>
